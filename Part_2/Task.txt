@@ -1,0 +1,32 @@
+Напишите программу вычисления стоимости поездки на автомобиле на дачу (туда и обратно). Исходными данными являются:
+
+   -> расстояние до дачи (в км);
+
+   -> литраж бензина, который потребляет автомобиль на 100 км пробега;
+
+   цена одного литра бензина.
+
+Пример результата выполнения программы:
+
+Расстояние до дачи (км): 67
+Расход бензина (литров на 100 км пробега): 8.5
+Цена литра бензина (у.е.): 50
+Поездка на дачу и обратно обойдется в 569.5 у.е.
+
+
+//English
+Write a program to calculate the cost of a car trip to the another point (round trip). The input data are:
+
+   -> distance to the point (in km);
+
+   -> the liter of fuel consumed by the car per 100 km;
+
+   -> the price of one liter of fuel.
+
+An example of the result of the program execution:
+
+Distance to the point (km): 67
+Fuel consumption (liters per 100 km driven): 8.5
+Price of a liter of fuel(c.u.): 50
+A trip to the point and back will cost 569.5 c.u.
+
