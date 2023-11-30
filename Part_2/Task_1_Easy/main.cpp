@@ -8,11 +8,11 @@ void Calculation_Trip(
 	int& _distance,
 	float& _fuel_consumption,
 	float& _price_for_liter_of_fuel
-	) 
+)
 {
-	cout << "Round trip will cost:" << "\t";
-	
-
+	//Расход делим на 100 км (получаем сколько литров на 1км) умножаем на дистанцию
+	// после умножаем на стоимость одного литра, умножаем на 2 и получаем результат
+	cout << "Round trip will cost:" << (((_fuel_consumption / 100) * _distance) * _price_for_liter_of_fuel) * 2 << "\t";
 }
 int main() {
 	int distance = 0;
@@ -26,8 +26,8 @@ int main() {
 	cin >> Fuel_consumption;
 	cout << "Price for liter of fuel(y.e)" << endl;
 	cin >> price_of_fuel;
-	Calculation_Trip();
-	
+	Calculation_Trip(distance, Fuel_consumption, price_of_fuel);
+
 
 	return 0;
 }

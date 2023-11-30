@@ -4,27 +4,30 @@
 using namespace std;
 
 
-void Get_Month_Number(int& x) {
-	if (x <= 2 || x == 12) {
-		cout << "Its Winter" << endl;
-	}
-	else if (x >= 3 && x < 6) {
-		cout << "Spring" << endl;
-	}
-	else if (x >= 6 && x < 9) {
-		cout << "Summer" << endl;
-	}
-	else if (x >= 13) {
-		cout << "FATAL ERROR: month cannot be more than 12" << endl;
-	}
-	else {
-		cout << "Autumn" << endl;
-	}
+void Calculation_Trip(
+	int& _distance,
+	float& _fuel_consumption,
+	float& _price_for_liter_of_fuel
+)
+{
+	//Расход делим на 100 км (получаем сколько литров на 1км) умножаем на дистанцию
+	// после умножаем на стоимость одного литра, умножаем на 2 и получаем результат
+	cout << "Round trip will cost:" << (((_fuel_consumption / 100) * _distance) * _price_for_liter_of_fuel) * 2 << "\t";
 }
 int main() {
-	cout << "Enter any number of month" << endl;
-	int data;
-	cin >> data;
-	Get_Month_Number(data);
+	int distance = 0;
+	float Fuel_consumption = 0.0;
+	float price_of_fuel = 0.0;
+	float Round_trip = 0.0;
+	cout << "Getting calculation of distance" << "\n\n";
+	cout << "Distance to the point (km)" << endl;
+	cin >> distance;
+	cout << "Fuel consumption (liters per 100 km)" << endl;
+	cin >> Fuel_consumption;
+	cout << "Price for liter of fuel(y.e)" << endl;
+	cin >> price_of_fuel;
+	Calculation_Trip();
+
+
 	return 0;
 }
