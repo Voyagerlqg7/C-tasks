@@ -30,35 +30,42 @@ bool Count_Borders(string& word) {
 	bool central = false; //Переменная для проверки есть ли вообще центральный символ
 	int left_border = 0; //Левая часть\граница наших символов
 
-	for (short int i = 0; i < word.size();i++) {
+	for (short int i = 0; i < word.size(); i++) {
 		if (symbol_of_borders == word[i]) {
 			count_symbol_of_borders++;
 		}
 		else {
-			central = true; //Когда мы находим центральный символ, то у нас заканчивается левая граница наших символов
-			left_border = count_symbol_of_borders; //В переменную left_borders мы записываем сколько символов мы имеем с левой стороны ориентируясь на счетчик
-			count_symbol_of_borders = 0; // Поскольку мы в центре то мы должны обнулить счетчик,
+			if (!central) {
+				central = true; // Когда мы находим центральный символ, то у нас заканчивается левая граница наших символов
+				left_border = count_symbol_of_borders; //В переменную left_borders мы записываем сколько символов мы имеем с левой стороны ориентируясь на счетчик
+			}
+			else {
+				cout << "There is more than one central symbol: " << word << endl;
+				return false;
+			}
+			// Поскольку мы в центре то мы должны обнулить счетчик,
 			//после прохождения центра начнётся пересчет правой границы символов, переменная count_symbol... уже будет хранить правые границы.
+			count_symbol_of_borders = 0;
 		}
 	}
 	if (left_border == count_symbol_of_borders && central) { return true; }
 	else { return false; }
 }
 bool isIceCreamSandwich(string& word) {
-		if (Count_Borders(word)) {
-			return true;
-		}
-		else {
-			return false;
-		}
+	if (Count_Borders(word)) {
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 int main() {
 	cout << "Enter a sandwich" << endl;
 	string x;
 	cin >> x;
-	if (isIceCreamSandwich(x)){ cout << x << "\t" << "Is a sandwich" << "\n"; }
-	else { cout << x << "\t" << "Is a not sandwich" << "\n";}
-	
-	
+	if (isIceCreamSandwich(x)) { cout << x << "\t" << "Is a sandwich" << "\n"; }
+	else { cout << x << "\t" << "Is a not sandwich" << "\n"; }
+
+
 	return 0;
 }
