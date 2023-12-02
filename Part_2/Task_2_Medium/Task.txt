@@ -1,0 +1,17 @@
+#Russian
+Напишите программу вычисления стоимости покупки с учетом скидки. Скидка в 3% предоставляется, если сумма покупки больше 500 долларов, в 5% — если сумма покупки больше 1000 долларов.
+
+Пример результата выполнения программы:
+
+Введите сумму покупки: 640
+Вам предоставляется скидка в 3%
+Сумма с учетом скидки: 620.80 долларов.
+
+#English
+Write a program to calculate the cost of a purchase taking into account a discount. A 3% discount is given if the purchase amount is greater than $500, a 5% discount is given if the purchase amount is greater than $1000.
+
+Example result of the program execution:
+
+Enter the purchase amount: 640
+You are given a 3% discount
+Discounted amount: 620.80 dollars.
