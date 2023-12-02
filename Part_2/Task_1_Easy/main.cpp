@@ -27,7 +27,5 @@ int main() {
 	cout << "Price for liter of fuel(y.e)" << endl;
 	cin >> price_of_fuel;
 	Calculation_Trip(distance, Fuel_consumption, price_of_fuel);
-
-
 	return 0;
 }

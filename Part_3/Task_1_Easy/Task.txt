@@ -1,0 +1,18 @@
+#Russian
+Напишите программу, вычисляющую скорость, с которой бегун пробежал дистанцию.
+
+Пример результата выполнения программы:
+
+Введите длину дистанции (м): 1000
+Введите время (минут.секунд): 3.25
+Вы бежали со скоростью 17.56 км/час
+
+#English
+
+Write a program that calculates the speed at which a runner has run a distance.
+
+Example of the result of the program execution:
+
+Enter the length of the distance (m): 1000
+Enter the time (minutes.seconds): 3.25
+You ran at a speed of 17.56 km/hour
