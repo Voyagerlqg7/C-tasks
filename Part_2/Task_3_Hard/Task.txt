@@ -1,0 +1,32 @@
+#Russian
+Напишите программу, реализующую игру «Угадай число». Компьютер загадывает число от 0 до 999 (используйте генерацию случайных чисел), а пользователь угадывает его. На каждом шаге угадывающий делает предположение, а задумавший число — сообщает, сколько цифр из числа угаданы и сколько из угаданных цифр занимают правильные позиции в числе. Например, если задумано число 725 и выдвинуто предположение, что задумано число 523, то угаданы две цифры (5 и 2), и одна из них занимает верную позицию. Например:
+
+Компьютер загадал трехзначное число. Вы должны его отгадать. После очередного числа вам будет сообщено, сколько цифр угадано и сколько из них находится на своих местах.
+Ваш вариант: 123
+Угадано: 0. На своих местах: 0
+Ваш вариант: 456
+Угадано: 1. На своих местах: 1
+Ваш вариант: 654
+Угадано: 2. На своих местах: 2
+Ваш вариант: 657
+Угадано: 2. На своих местах: 2
+Ваш вариант: 658
+Угадано: 3. На своих местах: 3
+***Вы угадали число 658!***
+
+#English
+
+Write a program that implements the "Guess the Number" game. The computer guesses a number from 0 to 999 (use random number generation) and the user guesses it. At each step, the guesser makes a guess and the person who guessed the number reports how many digits from the number are guessed and how many of the guessed digits occupy the correct positions in the number. For example, if the number 725 is conceived and a guess is made that the number 523 is conceived, two digits (5 and 2) are guessed and one of them occupies the correct position. For example:
+
+The computer has guessed a three-digit number. You must guess it. After the next number, you will be told how many digits have been guessed and how many of them are in their correct positions.
+Your guess: 123.
+Guessed: 0. In their places: 0.
+Your choice: 456
+Guessed: 1. On their places: 1
+Your guess: 654
+Guess: 2. In your seats: 2
+Your guess: 657
+Guess: 2. In their seats: 2
+Your guess: 658.
+Guess: 3. In your seats: 3.
+***You guessed 658! ***
