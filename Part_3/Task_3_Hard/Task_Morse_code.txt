@@ -1,0 +1,5 @@
+#Russian
+Напишите программу-телеграф, которая принимает от пользователя сообщение и выводит его на экран в виде последовательности точек и тире. Вывод точек и тире можно сопровождать звуковым сигналом соответствующей длительности.
+
+English
+Write a telegraph programme that receives a message from a user and displays it on the screen as a sequence of dots and dashes. The dots and dashes can be accompanied by a sound signal of appropriate duration.

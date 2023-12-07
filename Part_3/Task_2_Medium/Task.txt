@@ -1,0 +1,13 @@
+Write a programme that calculates the sum of the first n positive even integers. The number of summed numbers is entered by the user.
+
+Example of the result of the programme execution:
+
+Enter the number of numbers to be summed: 12
+The sum of the first 12 positive even integers is 156
+
+Напишите программу, которая вычисляет сумму первых n целых положительных четных чисел. Количество суммируемых чисел вводит пользователь.
+
+Пример результата выполнения программы:
+
+Введите количество суммируемых чисел: 12
+Сума первых 12 целых положительных четных чисел равна 156
