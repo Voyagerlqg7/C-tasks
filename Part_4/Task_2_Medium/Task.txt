@@ -1,0 +1,22 @@
+#Russian
+Напишите программу, которая вычисляет среднее арифметическое последовательности дробных чисел, вводимых с клавиатуры. После ввода пользователем последнего числа программа должна вывести минимальное и максимальное числа из последовательности. Количество чисел последовательности вводит пользователь.
+
+Пример результата выполнения программы:
+
+Введите количество чисел последовательности: 5
+Введите последовательность: 5.4 7.8 3.0 1.5 2.3
+Среднее арифметическое: 4.00
+Минимальное число: 1.5
+Максимальное число: 7.8
+
+#English
+
+Write a program that calculates the arithmetic mean of a sequence of fractional numbers entered from the keyboard. After the user enters the last number, the program must output the minimum and maximum numbers in the sequence. The number of numbers in the sequence is entered by the user.
+
+Example result of the program execution:
+
+Enter the number of numbers of the sequence: 5
+Enter the sequence: 5.4 7.8 3.0 1.5 2.3
+Arithmetic mean: 4.00
+Minimum number: 1.5
+Maximum number: 7.8

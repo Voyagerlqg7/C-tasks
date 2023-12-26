@@ -1,0 +1,15 @@
+#Russian
+Напишите программу пересчета расстояния из верст в километры (1 верста = 1.0668 км).
+
+Пример результата выполнения программы:
+
+Введите расстояние в верстах: 100
+100 верст = 106.68 км
+
+#English
+Write a program to convert distance from versts to kilometers (1 verst = 1.0668 km).
+
+Example result of the program execution:
+
+Enter the distance in versts: 100
+100 versts = 106.68 km
