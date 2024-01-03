@@ -1,0 +1,1 @@
+Write a program that displays a message in "telegraph" style: the letters of the message should appear one by one with some delay.

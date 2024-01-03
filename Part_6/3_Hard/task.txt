@@ -1,0 +1,17 @@
+Write a program that contains current information about ten airline ticket requests. Each request must have:
+
+   destination;
+
+   flight number;
+
+   the name of the passenger;
+
+   the desired date of departure.
+
+The program should provide:
+
+   storage of all requests in the form of a list;
+
+   adding and deleting requests;
+
+   output of all requests.

@@ -1,0 +1,6 @@
+Write a program that compares two numbers entered from the keyboard. The program should indicate which number is smaller or, if the numbers are equal, print a corresponding message.
+
+Example of the result of the program execution:
+
+Enter 2 integers: 48 54
+48 is less than 54
