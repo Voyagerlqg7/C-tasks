@@ -1,0 +1,7 @@
+Easy: Assignment #1
+Write a program to convert the value of time interval given in minutes to the value expressed in hours and minutes.
+
+Example of the result of the program execution:
+
+Enter the time interval (in minutes): 150
+150 minutes = 2 hours. 30 min.

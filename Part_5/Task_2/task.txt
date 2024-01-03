@@ -1,0 +1,17 @@
+Write a program that displays a table of the cost of, for example, apples ranging from 100 g to 1 kg in 100 g increments.
+
+Example result of the program execution:
+
+Enter the price of 1 kg of apples: 16.50
+Weight Cost
+(g) (rub.)
+100 1.65
+200 3.30
+300 4.95
+400 6.60
+500 8.25
+600 9.90
+700 11.55
+800 13.20
+900 14.85
+1000 16.50
