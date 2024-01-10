@@ -1,0 +1,13 @@
+Write a program to keep track of students' grades. To do this, create a text file named input_data.txt containing a list of 10 students and their grades in three subjects: math, physics, and computer science.
+
+The contents of the file are:
+
+   the first line contains the total number of students;
+
+   each subsequent line contains the student's full name and three integers (grades);
+
+   the data on the line is separated by spaces, and the grades range from 1 to 5.
+
+Next, create a class that you will use to read the data from the file. On the screen, display the names of students with grades in descending order of their grade point average.
+
+Translated with www.DeepL.com/Translator (free version)

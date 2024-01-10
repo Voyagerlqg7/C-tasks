@@ -9,7 +9,7 @@ void GetResult(const double& x) {
 	}
 	else cout << "A fractional number is entered " << endl;
 }
-int main(){
+int main() {
 	cout << "Enter number" << endl;
 	double x;
 	cin >> x;

@@ -1,0 +1,2 @@
+Easy: Assignment #1
+Write a program that displays a running "electronic clock" that runs for, for example, 3 minutes or until the user presses any key.

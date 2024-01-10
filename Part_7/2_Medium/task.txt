@@ -1,0 +1,6 @@
+Write a program that checks whether a string entered by the user is an integer.
+
+Example of the result of executing the program:
+
+Enter the string: 36.7
+36.7 is not an integer
