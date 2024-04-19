@@ -1,0 +1,23 @@
+#include<iostream>
+#include<string>
+
+
+using namespace std;
+
+int findMaxK(int n) {
+    int sum = 0;
+    int k = 0;
+    while (sum <= n) {
+        k++;
+        sum += k;
+    }
+    return k - 1;
+}
+
+int main() {
+    int n;
+    cin >> n;
+    int maxK = findMaxK(n);
+    cout << maxK << endl;
+    return 0;
+}

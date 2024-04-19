@@ -1,0 +1,73 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <limits>
+#include <iomanip>
+
+using namespace std;
+
+struct Point {
+    double x;
+    double y;
+};
+
+bool compareByX(const Point& p1, const Point& p2) {
+    return p1.x < p2.x;
+}
+
+bool compareByY(const Point& p1, const Point& p2) {
+    return p1.y < p2.y;
+}
+
+double distance(const Point& p1, const Point& p2) {
+    return sqrt(pow(p2.x - p1.x, 2) + pow(p2.y - p1.y, 2));
+}
+
+double closestPairUtil(const vector<Point>& points, int left, int right) {
+    if (left >= right) {
+        return numeric_limits<double>::max();
+    }
+
+    int mid = left + (right - left) / 2;
+    double minDistance = min(closestPairUtil(points, left, mid), closestPairUtil(points, mid + 1, right));
+
+    vector<Point> strip;
+    for (int i = left; i <= right; ++i) {
+        if (abs(points[i].x - points[mid].x) < minDistance) {
+            strip.push_back(points[i]);
+        }
+    }
+
+    sort(strip.begin(), strip.end(), compareByY);
+
+    for (size_t i = 0; i < strip.size(); ++i) {
+        for (size_t j = i + 1; j < strip.size() && strip[j].y - strip[i].y < minDistance; ++j) {
+            minDistance = min(minDistance, distance(strip[i], strip[j]));
+        }
+    }
+
+    return minDistance;
+}
+
+double closestPair(const vector<Point>& points) {
+    vector<Point> sortedPoints = points;
+    sort(sortedPoints.begin(), sortedPoints.end(), compareByX);
+    return closestPairUtil(sortedPoints, 0, sortedPoints.size() - 1);
+}
+
+int main() {
+    int n;
+    cin >> n;
+
+    vector<Point> points(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> points[i].x >> points[i].y;
+    }
+
+    double minDistance = closestPair(points);
+
+    cout << fixed << setprecision(6) << minDistance << endl;
+
+    return 0;
+}

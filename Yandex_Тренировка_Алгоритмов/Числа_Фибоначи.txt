@@ -1,0 +1,67 @@
+
+РЕКУРСИЯ
+
+#include<iostream>
+#include<string>
+#include<vector>
+#include<sstream>
+#include<algorithm>
+
+using namespace std;
+int Fibonacci(int number)
+{
+    if (number == 0)
+        return 0; // базовый случай (условие завершения)
+    if (number == 1)
+        return 1; // базовый случай (условие завершения)
+    return Fibonacci(number - 1) + Fibonacci(number - 2);
+}
+
+// Выводим первые 13 чисел Фибоначчи
+int main()
+{
+    int x;
+    cin >> x;
+    int result;
+    for (int count = 0; count <= x; ++count) {
+        result = Fibonacci(count);
+    }
+    cout << result << endl;
+
+    return 0;
+}
+
+ИТЕРАЦИОННЫЙ
+
+#include<iostream>
+#include<string>
+#include<vector>
+#include<sstream>
+#include<algorithm>
+#include<ranges>
+
+using namespace std;
+int Fibonacci(int number)
+{
+    vector<int> _vector;
+    if (number == 0)
+        return 0; // базовый случай (условие завершения)
+    if (number == 1)
+        return 1; // базовый случай (условие завершения)
+    int previous = 0;
+    int current = 1;
+    for (int i = 0; i < number - 1; ++i) {
+        int oldPrevious = previous;
+        previous = current;
+        current = oldPrevious + previous;
+    }
+    cout<< current;
+}
+int main()
+{
+    int x;
+    cin >> x;
+    Fibonacci(x);
+
+    return 0;
+}

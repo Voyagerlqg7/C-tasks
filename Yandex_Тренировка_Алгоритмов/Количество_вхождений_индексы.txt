@@ -1,0 +1,75 @@
+#include<string>
+#include<iostream>
+#include<vector>
+#include<sstream>
+#include<algorithm>
+#include <unordered_map>
+#include <unordered_set>
+
+
+using namespace std;
+
+void CountOfIndexes(vector<int>& _vector_1, vector<int>& _vector_2) {
+	// Создаем хэш-таблицу для хранения индексов элементов из первого массива
+	unordered_map<int, int> index_map;
+
+	// Заполняем хэш-таблицу индексами элементов из первого массива
+	for (int i = 0; i < _vector_1.size(); ++i) {
+		index_map[_vector_1[i]] = i;
+	}
+
+	// Проверяем наличие элементов из второго массива в хэш-таблице
+	for (int num : _vector_2) {
+		if (index_map.find(num) != index_map.end()) {
+			cout << index_map[num] << endl;
+		}
+        else {
+	        cout << -1 <<endl;
+        }
+	}
+}
+
+void ProcessInput(vector<int>& _vector_1, const int& _n) {
+	string input;
+	getline(cin, input);
+	stringstream ss_1(input);
+	int number=0;
+	for (int i = 0; i < _n; i++) {
+		if (!(ss_1 >> number)) {
+			throw runtime_error("FATAL ERROR: wrong type of data in _vector");
+		}
+		else {
+			_vector_1.push_back(number);
+		}
+	}
+
+	input.clear();
+
+	int count_of_Index_input = 0;
+	cin >> count_of_Index_input;
+	cin.ignore();
+	vector<int> _vector_2;
+	getline(cin, input);
+	stringstream ss_2(input);
+	number = 0;
+	for (int i = 0; i < count_of_Index_input; i++) {
+		if (!(ss_2 >> number)) {
+			throw runtime_error("FATAL ERROR: wrong type of data in _vector");
+		}
+		else {
+			_vector_2.push_back(number);
+		}
+	}
+
+	CountOfIndexes(_vector_1, _vector_2);
+}
+
+
+int main() {
+	int n = 0;
+	cin >> n;
+	cin.ignore();
+	vector<int> my_vector;
+	ProcessInput(my_vector, n);
+	return 0;
+}

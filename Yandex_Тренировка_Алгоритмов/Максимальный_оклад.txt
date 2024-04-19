@@ -1,0 +1,61 @@
+https://new.contest.yandex.ru/48630/problem?id=215/2023_04_08/YBCayKqWhd
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <sstream>
+#include <climits>
+
+using namespace std;
+
+bool isBetter(int number, int maxNumber) {
+    string numStr = to_string(number);
+    string maxNumStr = to_string(maxNumber);
+    return (numStr + maxNumStr) > (maxNumStr + numStr);
+}
+
+string largestConcatenate(vector<int>& Numbers) {
+    string yourSalary = ""; // Пустая строка
+    while (!Numbers.empty()) {
+        int maxNumber = INT_MIN; // Минимальное целое значение
+        for (int number : Numbers) {
+            if (isBetter(number, maxNumber)) {
+                maxNumber = number;
+            }
+        }
+        yourSalary += to_string(maxNumber); // Добавляем число в конец
+        Numbers.erase(find(Numbers.begin(), Numbers.end(), maxNumber)); // Удалить число maxNumber из вектора
+    }
+    return yourSalary;
+}
+
+void ProcessInput(vector<int>& _vector, const int& _n) {
+    string input;
+    getline(cin, input);
+    stringstream ss(input);
+    int number;
+    for (int i = 0; i < _n; i++) {
+        if (!(ss >> number)) {
+            throw runtime_error("FATAL ERROR: wrong type of data in _vector");
+        }
+        _vector.push_back(number);
+    }
+}
+
+int main() {
+    int n = 0;
+    cin >> n;
+    cin.ignore();
+    vector<int> my_vector;
+    try {
+        ProcessInput(my_vector, n);
+        string result = largestConcatenate(my_vector);
+        cout << result;
+    }
+    catch (const exception& e) {
+        cerr << e.what() << endl;
+        return 1;
+    }
+    return 0;
+}

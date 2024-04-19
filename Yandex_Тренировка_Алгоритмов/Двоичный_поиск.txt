@@ -1,0 +1,55 @@
+#include<string>
+#include<iostream>
+#include<vector>
+#include<sstream>
+#include<algorithm>
+
+using namespace std;
+
+int Binary_Search(vector<int>& _vector, const int & target) {
+	int left = 0;
+	int right = _vector.size() - 1;
+
+	while (left <= right) {
+		int mid = left + (right - left) / 2;
+
+		if (_vector[mid] == target) {
+			return mid;  // Нашли элемент, возвращаем его индекс
+		}
+		else if (_vector[mid] < target) {
+			left = mid + 1;  // Искомое число находится в правой части
+		}
+		else {
+			right = mid - 1;  // Искомое число находится в левой части
+		}
+	}
+
+	return -1;  // Элемент не найден
+}
+
+void ProcessInput(vector<int>& _vector, int& _n) {
+	string input;
+	int number;
+	getline(cin, input);
+	stringstream ss(input);
+	for (int i = 0; i < _n; i++) {
+		if (!(ss >> number)) {
+			cout << "FATAL ERROR: wrong type of data _vector";
+		}
+		_vector.push_back(number);
+	}
+
+	int findNumber;
+	cin >> findNumber;
+	sort(_vector.begin(), _vector.end());
+	Binary_Search(_vector,findNumber);
+}
+
+int main() {
+	int n = 0;
+	cin >> n;
+	vector<int> my_vector;
+	ProcessInput(my_vector, n);
+
+	return 0;
+}

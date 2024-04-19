@@ -1,0 +1,39 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+void GetMultiply(vector<int>& _vector) {
+    int result = 1; // Инициализация результата
+    for (int i = 0; i < _vector.size() - 1; i++) { // Последний элемент не имеет следующего элемента
+        result *= _vector[i] * _vector[i + 1]; // Умножаем текущий элемент на следующий
+    }
+    cout << result << endl;
+}
+
+void StartProccess(const string& _input, const int& _countNum) {
+    vector<int> _vector;
+    stringstream ss(_input);
+    int number;
+    for (int i = 0; i < _countNum; i++) {
+        if (ss >> number) {
+            _vector.push_back(number);
+        }
+        else {
+            cout << "ERROR" << endl;
+        }
+    }
+    GetMultiply(_vector);
+}
+
+int main() {
+    int count_of_numbers;
+    cin >> count_of_numbers;
+    cin.ignore();
+    string input;
+    getline(cin, input);
+    StartProccess(input, count_of_numbers);
+    return 0;
+}

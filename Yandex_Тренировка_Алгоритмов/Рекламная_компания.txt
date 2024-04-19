@@ -1,0 +1,97 @@
+#include <iostream>
+#include <sstream>
+#include <algorithm>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+void Process(vector<int>& _vector_1, vector<int>& _vector_2) {
+    reverse(_vector_2.begin(), _vector_2.end());
+    int result = 0;
+    for (int i = 0; i < _vector_1.size(); i++) {
+        result += _vector_1[i] * _vector_2[i];
+    }
+    cout << result;
+}
+
+void InputProc(int n, vector<int>& vector_1, vector<int>& vector_2) {
+    string input_1, input_2;
+    int number;
+
+    getline(cin, input_1);
+    stringstream ss_1(input_1);
+    for (int i = 0; i < n; i++) {
+        if (ss_1 >> number) {
+            vector_1.push_back(number);
+        }
+        else {
+            return;
+        }
+    }
+
+    getline(cin, input_2);
+    stringstream ss_2(input_2);
+    for (int i = 0; i < n; i++) {
+        if (ss_2 >> number) {
+            vector_2.push_back(number);
+        }
+        else {
+            return;
+        }
+    }
+}
+
+int main() {
+    int n = 0;
+    cin >> n;
+    cin.ignore();
+
+    vector<int> vector_1, vector_2;
+    InputProc(n, vector_1, vector_2);
+    Process(vector_1, vector_2);
+
+    return 0;
+}
+
+
+
+Второй вариант
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int Revenue(vector<int>& Click, vector<int>& Price) {
+    int revenue = 0;
+
+    // Сортировка списков Click и Price в порядке убывания
+    sort(Click.rbegin(), Click.rend());
+    sort(Price.rbegin(), Price.rend());
+
+    while (!Click.empty() && !Price.empty()) {
+        // Берем самый большой элемент из Click и Price
+        int p = Click.front();
+        int q = Price.front();
+
+        // Вычисляем прибыль и удаляем элементы из списков
+        revenue += p * q;
+        Click.erase(Click.begin());
+        Price.erase(Price.begin());
+    }
+
+    return revenue;
+}
+
+int main() {
+    // Пример использования
+    vector<int> Click = {10, 5, 8, 12};
+    vector<int> Price = {100, 200, 150, 300};
+
+    int totalRevenue = Revenue(Click, Price);
+    cout << "Total revenue: " << totalRevenue << endl;
+
+    return 0;
+}
+

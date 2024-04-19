@@ -1,0 +1,88 @@
+#include<iostream>
+#include<sstream>
+#include<string>
+#include<vector>
+
+
+using namespace std;
+vector<int> my_vector;
+
+void ShowVector(vector<int>& _vector) {
+    for (auto i : _vector) {
+        cout << i << " ";
+    }
+}
+void Merge(vector<int>& arr, int left, int mid, int right) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+
+    vector<int> L(n1);
+    vector<int> R(n2);
+
+    for (int i = 0; i < n1; i++)
+        L[i] = arr[left + i];
+    for (int j = 0; j < n2; j++)
+        R[j] = arr[mid + 1 + j];
+
+    int i = 0;
+    int j = 0;
+    int k = left;
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        }
+        else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+void MergeSort(vector<int>& arr, int left, int right) {
+    if (left < right) {
+        int mid = left + (right - left) / 2;
+        MergeSort(arr, left, mid);
+        MergeSort(arr, mid + 1, right);
+        Merge(arr, left, mid, right);
+    }
+}
+void ProcessSet(const string& input, int elements_in_vector) {
+    stringstream ss(input);
+
+    int numbers;
+    for (int j = 0; j < elements_in_vector; j++) {
+        if (ss >> numbers) {
+            my_vector.push_back(numbers);
+        }
+        else {
+            cout << "ERROR: input elements in sets" << endl;
+            return;
+        }
+    }
+    MergeSort(my_vector,0, my_vector.size()-1);
+    ShowVector(my_vector);
+}
+int main() {
+	int count_of_elements;
+	cin >> count_of_elements;
+    string input;
+    int numbers;
+    cin.ignore();
+    getline(cin, input);
+    stringstream ss(input);
+    ProcessSet(input, count_of_elements);
+	return 0;
+}

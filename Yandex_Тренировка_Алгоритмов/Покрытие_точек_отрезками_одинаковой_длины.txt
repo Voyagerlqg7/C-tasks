@@ -1,0 +1,40 @@
+#include<iostream>
+#include<string>
+#include<sstream>
+#include<vector>
+#include<algorithm>
+
+using namespace std;
+void Cover(std::vector<int>& data, int l) {
+    //сортируем вектор координат точек
+    std::sort(data.begin(), data.end());
+
+
+    int interval_count = 1; // количество отрезков
+    int r_point = data[0] + l; //правая граница последнего установленного отрезка
+    for (int& elem : data) {
+        if (elem > r_point) {
+            interval_count += 1;
+            r_point = elem + l;
+        }
+    }
+    cout << interval_count;
+}
+int main() {
+    int n, L;
+    cin >> n >> L;
+    cin.ignore();
+    vector<int> _vector;
+    string input;
+    int number;
+    getline(cin, input);
+    stringstream ss(input);
+    for (int i = 0; i < n; i++) {
+        if (ss>>number) {
+            _vector.push_back(number);
+        }
+        else { cout << "FATAL ERROR"; }
+    }
+    Cover(_vector,L);
+	return 0;
+}

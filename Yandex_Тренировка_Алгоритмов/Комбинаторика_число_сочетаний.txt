@@ -1,0 +1,24 @@
+#include<iostream>
+
+using namespace std;
+
+unsigned long long factorial(int x) {
+    unsigned long long result = 1;
+    for (int i = 1; i <= x; ++i) {
+        result *= i;
+    }
+    return result;
+}
+
+int main() {
+    int number_n, number_k, number_x;
+    cin >> number_n >> number_k;
+
+    unsigned long long result_n = factorial(number_n);
+    unsigned long long result_k = factorial(number_k);
+    number_x = number_n - number_k;
+
+    cout << result_n / (result_k * factorial(number_x)) << endl;
+
+    return 0;
+}

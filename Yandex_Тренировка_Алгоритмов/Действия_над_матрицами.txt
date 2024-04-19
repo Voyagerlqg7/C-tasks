@@ -1,0 +1,54 @@
+#include<iostream>
+#include<sstream>
+#include<vector>
+
+using namespace std;
+
+
+void show_MatrixSum(vector<vector<int>> &matrix_1, vector<vector<int>> &matrix_2, const int& _rows, const int& _colons) {
+	for (int i = 0; i < _rows; ++i) {
+		for (int j = 0; j < _colons; ++j) {
+			cout << matrix_1[i][j] + matrix_2[i][j] << " ";
+		}
+		cout << endl;
+	}
+}
+void DoMagic(const int& _rows, const int& _colons) {
+	vector<vector<int>> matrix_1(_rows, vector<int>(_colons));
+	string input;
+	int number;
+	stringstream ss(input);
+	for (int i = 0; i < _rows; i++) {
+		getline(cin, input);
+		stringstream ss(input);
+		for (int j = 0; j < _colons; ++j) {
+			if (ss >> number) {
+				matrix_1[i][j] = number;
+			}
+			else {
+				cout << "ERROR." << endl;
+			}
+		}
+	}
+	vector<vector<int>> matrix_2(_rows, vector<int>(_colons));
+	for (int i = 0; i < _rows; i++) {
+		getline(cin, input);
+		stringstream ss(input);
+		for (int j = 0; j < _colons; ++j) {
+			if (ss >> number) {
+				matrix_2[i][j] = number;
+			}
+			else {
+				cout << "ERROR." << endl;
+			}
+		}
+	}
+	show_MatrixSum(matrix_1, matrix_2, _rows, _colons);
+}
+int main() {
+	int row, colons;
+	cin >> row >> colons;
+	cin.ignore();
+	DoMagic(row, colons);
+	return 0;
+}

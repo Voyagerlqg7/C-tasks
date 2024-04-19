@@ -1,0 +1,70 @@
+#include<string>
+#include<iostream>
+#include<vector>
+#include<sstream>
+#include<algorithm>
+#include <unordered_map>
+
+using namespace std;
+
+void CountOfIndexes(vector<int>& _vector_1, vector<int>& _vector_2) {
+	// Создаем словарь для подсчета количества вхождений элементов из второго массива в первый
+	unordered_map<int, int> count_map;
+
+	// Считаем количество вхождений элементов из второго массива в первый
+	for (int num : _vector_1) {
+		count_map[num]++;
+	}
+
+	// Выводим количество вхождений для каждого элемента из второго массива
+	for (int num : _vector_2) {
+		cout << count_map[num] << " ";
+	}
+	
+}
+
+void ProcessInput(vector<int>& _vector_1, const int& _n) {
+	string input;
+	getline(cin, input);
+	stringstream ss_1(input);
+	int number=0;
+	for (int i = 0; i < _n; i++) {
+		if (!(ss_1 >> number)) {
+			throw runtime_error("FATAL ERROR: wrong type of data in _vector");
+		}
+		else {
+			_vector_1.push_back(number);
+		}
+	}
+
+	input.clear();
+
+	int count_of_Index_input = 0;
+	cin >> count_of_Index_input;
+	cin.ignore();
+	vector<int> _vector_2;
+	getline(cin, input);
+	stringstream ss_2(input);
+	number = 0;
+	for (int i = 0; i < count_of_Index_input; i++) {
+		if (!(ss_2 >> number)) {
+			throw runtime_error("FATAL ERROR: wrong type of data in _vector");
+		}
+		else {
+			_vector_2.push_back(number);
+		}
+	}
+
+	CountOfIndexes(_vector_1, _vector_2);
+}
+
+
+int main() {
+	int n = 0;
+	cin >> n;
+	cin.ignore();
+	vector<int> my_vector;
+	ProcessInput(my_vector, n);
+
+	return 0;
+}

@@ -1,0 +1,48 @@
+#include<iostream>
+#include<string>
+#include<sstream>
+#include<vector>
+#include<algorithm>
+
+using namespace std;
+
+void MaximumProduct(const vector<int>& nums) {
+	int n = nums.size();
+	if (n < 3) {
+		cout << "ERROR: there is less than 3 numbers" << endl;
+		return;
+	}
+
+	// Сортировка в порядке возрастания
+	vector<int> sortedNums = nums;
+	sort(sortedNums.begin(), sortedNums.end());
+
+	// Максимальное произведение трех чисел:
+	int maxProduct = max(sortedNums[n - 1] * sortedNums[n - 2] * sortedNums[n - 3],
+		sortedNums[0] * sortedNums[1] * sortedNums[n - 1]);
+
+	cout << maxProduct << endl;
+}
+void StartProcess(const string& _input, const int &n) {
+	vector<int> _vector;
+	stringstream ss(_input);
+	int number = 0;
+	for (int i = 0; i < n; i++) {
+		if (ss>>number) {
+			_vector.push_back(number);
+		}
+		else {
+			cout << "ERROR there is no integer symbol" << endl;
+		}
+	}
+	MaximumProduct(_vector);
+}
+int main() {
+	int n = 0;
+	cin >> n;
+	cin.ignore();
+	string input;
+	getline(cin, input);
+	StartProcess(input,n);
+	return 0;
+}

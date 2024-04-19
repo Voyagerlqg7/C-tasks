@@ -1,0 +1,36 @@
+#include<iostream>
+#include<vector>
+#include<climits>
+
+using namespace std;
+
+int Exchange(vector<int>& coins, const int& amount) {
+    vector<int> dp(amount + 1, INT_MAX);
+    dp[0] = 0;
+
+    for (int i = 1; i <= amount; i++) {
+        for (int coin : coins) {
+            if (coin <= i && dp[i - coin] != INT_MAX) {
+                if (dp[i] > dp[i - coin] + 1) {
+                    dp[i] = dp[i - coin] + 1;
+                }
+            }
+        }
+    }
+
+    if (dp[amount] == INT_MAX) {
+        return -1;
+    }
+    else {
+        return dp[amount];
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+    vector<int> coins = { 1, 3, 4 };
+    int result = Exchange(coins, n);
+    cout << result << endl;
+    return 0;
+}

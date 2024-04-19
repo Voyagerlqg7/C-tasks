@@ -1,0 +1,24 @@
+#include<iostream>
+#include<string>
+#include<vector>
+#include<sstream>
+#include<algorithm>
+#include<ranges>
+
+using namespace std;
+long long int LCM(long long int a, long long int b) {
+    long long int t;
+    while (b != 0) {
+        t = b;
+        b = a % b;
+        a = t;
+    }
+    return t;
+}
+int main()
+{
+    long long x,y;
+    cin >> x>>y;
+    cout<< x*y/LCM(x, y);
+    return 0;
+}

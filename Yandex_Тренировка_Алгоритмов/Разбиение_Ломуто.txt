@@ -1,0 +1,59 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+void ShowVector(vector<int>& _vector) {
+    for (auto i : _vector) {
+        cout << i << " ";
+    }
+}
+
+void Lomuto_Partition(vector<int>& _vector, int low, int high) {
+    if (_vector.size() % 2 == 0) {
+        // Возвращаем последовательность без изменений
+        return;
+    }
+    int pivot = _vector[low];
+    int p_index = low;
+    for (int j = low + 1; j <= high; j++) {
+        if (_vector[j] <= pivot) {
+            swap(_vector[j], _vector[++p_index]);
+        }
+    }
+    swap(_vector[low], _vector[p_index]);
+}
+
+void ProcessSet(const string& input, int elements_in_vector) {
+    stringstream ss(input);
+    vector<int> my_vector; // Создаем вектор внутри функции
+
+    int numbers;
+    for (int j = 0; j < elements_in_vector; j++) {
+        if (ss >> numbers) {
+            my_vector.push_back(numbers);
+        }
+        else {
+            cout << "ERROR: input elements in sets" << endl;
+            return;
+        }
+    }
+    int n = my_vector.size(); // Размер вектора
+
+    Lomuto_Partition(my_vector, 0, n - 1);
+    ShowVector(my_vector);
+}
+
+int main() {
+    int count_of_elements;
+    cin >> count_of_elements;
+    cin.ignore(); // Игнорируем символ новой строки
+
+    string input;
+    getline(cin, input);
+
+    ProcessSet(input, count_of_elements);
+    return 0;
+}

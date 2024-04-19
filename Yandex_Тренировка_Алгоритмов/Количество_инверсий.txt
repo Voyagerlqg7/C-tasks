@@ -1,0 +1,92 @@
+#include<iostream>
+#include<string>
+#include<vector>
+#include<sstream>
+#include<algorithm>
+
+using namespace std;
+
+
+pair<vector<int>, int> Merge(vector<int>& LeftHalf, vector<int>& RightHalf) {
+    vector<int> SortedList;
+    int inversions = 0;
+
+    int left_size = LeftHalf.size();
+    int right_size = RightHalf.size();
+    int left_index = 0;
+    int right_index = 0;
+
+    while (left_index < left_size && right_index < right_size) {
+        int l = LeftHalf[left_index];
+        int r = RightHalf[right_index];
+        if (l <= r) {
+            SortedList.push_back(l);
+            left_index++;
+        }
+        else {
+            SortedList.push_back(r);
+            right_index++;
+            // учитываем только не перемещенные элементы
+            inversions += left_size - left_index;
+        }
+    }
+
+    // добавляем все оставшиеся элементы LeftHalf в SortedList
+    while (left_index < left_size) {
+        SortedList.push_back(LeftHalf[left_index]);
+        left_index++;
+    }
+
+    // добавляем все оставшиеся элементы RightHalf в SortedList
+    while (right_index < right_size) {
+        SortedList.push_back(RightHalf[right_index]);
+        right_index++;
+    }
+
+    return make_pair(SortedList, inversions);
+}
+
+pair<vector<int>, int> CountInversions(vector<int>& List) {
+    // список List будет отсортирован
+    int size = List.size();
+    if (size <= 1) {
+        return make_pair(List, 0);
+    }
+
+    // разделение на левую и правую половины
+    int middle = size / 2;
+    vector<int> LeftHalf(List.begin(), List.begin() + middle);
+    vector<int> RightHalf(List.begin() + middle, List.end());
+
+    // рекурсивное подсчет инверсий в левой и правой половинах
+    auto leftInv = CountInversions(LeftHalf);
+    auto rightInv = CountInversions(RightHalf);
+
+    // объединение и подсчет инверсий
+    auto merged = Merge(leftInv.first, rightInv.first);
+    int splitInv = merged.second;
+
+    return make_pair(merged.first, leftInv.second + rightInv.second + splitInv);
+}
+
+void ProcessInput(vector<int>& v, const int& n) {
+	string input;
+	int number = 0;
+	getline(cin, input);
+	stringstream ss(input);
+	for (int i = 0; i < n; i++) {
+		if (!(ss >> number)) { cout << "FATAL ERROR"; }
+		v.push_back(number);
+	}
+}
+
+int main() {
+	int n;
+	cin >> n;
+	cin.ignore();
+	vector<int> my_vector;
+    ProcessInput(my_vector, n);
+	auto result = CountInversions(my_vector);
+    cout << result.second << endl;
+	return 0;
+}

@@ -1,0 +1,66 @@
+#include <iostream>
+#include <sstream>
+#include <vector>
+
+using namespace std;
+vector<int> my_vector;
+
+
+void SelectionSort(vector<int>& _vector) {
+    int min;
+    for (int i = 0; i < _vector.size(); i++) {
+        min = i;
+        for (int j = i + 1; j < _vector.size(); j++) {
+            if (_vector[min] > _vector[j]) {
+                int temp = _vector[min];
+                _vector[min] = _vector[j];
+                _vector[j] = temp;
+            }
+        }
+    }
+    for (auto i : _vector) {
+        cout << i << " ";
+    }
+}
+void ProcessSet(const string& input, int elements_in_set) {
+    stringstream ss(input);
+    
+
+    int numbers;
+    for (int j = 0; j < elements_in_set; j++) {
+        if (ss >> numbers) {
+            my_vector.push_back(numbers);
+        }
+        else {
+            cout << "ERROR: input elements in sets" << endl;
+            return;
+        }
+    }
+}
+
+void CreateSets(const int& _count_of_sets) {
+    for (int i = 1; i <= _count_of_sets; i++) {
+        int elements_in_set;
+        cout << "Set number: " << i << " enter count of elements in set" << endl;
+        cin >> elements_in_set;
+
+        cin.ignore(); 
+
+        string input_elements;
+        cout << "Write elements" << endl;
+        getline(cin, input_elements);
+        ProcessSet(input_elements, elements_in_set);
+    }
+    SelectionSort(my_vector);
+}
+
+int main() {
+    int count_of_sets;
+    cout << "Enter count of sets" << endl;
+    cin >> count_of_sets;
+    cin.ignore(); 
+
+    CreateSets(count_of_sets);
+
+    return 0;
+}

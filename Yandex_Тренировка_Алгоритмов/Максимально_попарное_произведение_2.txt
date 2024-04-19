@@ -1,0 +1,61 @@
+#include<iostream>
+#include<sstream>
+#include<string>
+#include<vector>
+#include <algorithm>
+
+
+using namespace std;
+
+void MaxPairwiseProductFast(vector<int>& A) {
+    int n = A.size();
+    int index = 0;
+
+    // Находим индекс максимального элемента в массиве
+    for (int i = 1; i < n; ++i) {
+        if (A[i] > A[index]) {
+            index = i;
+        }
+    }
+
+    // Перемещаем максимальный элемент в конец массива
+    swap(A[index], A[n - 1]);
+
+    index = 0;
+
+    // Находим индекс второго по величине элемента в массиве
+    for (int i = 1; i < n - 1; ++i) {
+        if (A[i] > A[index]) {
+            index = i;
+        }
+    }
+
+    // Перемещаем второй по величине элемент перед последним
+    swap(A[index], A[n - 2]);
+
+    // Возвращаем произведение последних двух элементов
+    cout<<(long long)A[n - 1] * A[n - 2];
+}
+void StartProccess(const string& _input, const int& _countNum) {
+    vector<int> _vector;
+    stringstream ss(_input);
+    int number;
+    for (int i = 0; i < _countNum; i++) {
+        if (ss>>number) {
+            _vector.push_back(number);
+        }
+        else {
+            cout << "ERROR" << endl;
+        }
+    }
+    MaxPairwiseProductFast(_vector);
+}
+int main() {
+    int count_of_numbers;
+    cin >> count_of_numbers;
+    cin.ignore();
+    string input;
+    getline(cin, input);
+    StartProccess(input, count_of_numbers);
+    return 0;
+}

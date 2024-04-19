@@ -1,0 +1,24 @@
+#include <iostream>
+
+unsigned long long factorial(int x) {
+    unsigned long long result = 1;
+    for (int i = 1; i <= x; ++i) {
+        result *= i;
+    }
+    return result;
+}
+
+int main() {
+    int n, k;
+    std::cin >> n >> k;
+
+    int numerator = n + k - 1;
+    int denominator = k;
+
+    // Вычисляем C(n, k) с использованием формулы
+    unsigned long long result = factorial(numerator) / (factorial(denominator) * factorial(n - 1));
+
+    std::cout << result << std::endl;
+
+    return 0;
+}

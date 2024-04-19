@@ -1,0 +1,19 @@
+#include<iostream>
+
+using namespace std;
+
+
+void FastRocks(const int& n, const int& m) {
+	if (n%2==0 && m%2==0) {
+		cout << "Loose" << endl;
+	}
+	else {
+		cout << "Win" << endl;
+	}
+}
+int main() {
+	int n, m = 0;
+	cin >> n >> m;
+	FastRocks(n,m);
+	return 0;
+}

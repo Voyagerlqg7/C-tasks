@@ -1,0 +1,70 @@
+#include<iostream>
+#include<sstream>
+#include<string>
+#include<vector>
+#include<stack>
+
+using namespace std;
+
+void PrintArray(const vector<int> &_vector) {
+	for (auto i: _vector) {
+		cout << i << " ";
+	}
+}
+int Partition(vector<int>& _vector, int low, int high) {
+	int pivot = _vector[high];
+	int i = (low - 1);
+	for (int j = low; j <= high-1; j++) {
+		if (_vector[j]<= pivot) {
+			i++;
+			swap(_vector[i], _vector[j]);
+		}
+	}
+	swap(_vector[i + 1], _vector[high]);
+	return (i + 1);
+}
+void quickSort(vector<int>& _vector, int low, int high) {
+	stack<pair<int, int>> st;
+	st.push({ low, high });
+
+	while (!st.empty()) {
+		int start = st.top().first;
+		int end = st.top().second;
+		st.pop();
+
+		int pivot = Partition(_vector, start, end);
+
+		if (pivot - 1 > start) {
+			st.push({ start, pivot - 1 });
+		}
+		if (pivot + 1 < end) {
+			st.push({ pivot + 1, end });
+		}
+	}
+}
+void StartProcessSort(string &input,int & count_of_elements) {
+	int number;
+	vector<int> my_vector;
+	stringstream ss(input);
+	for (int i = 0; i < count_of_elements; i++) {
+		if (ss>>number) {
+			my_vector.push_back(number);
+		}
+		else {
+			cout << "ERROR: input elements in sets" << endl;
+			return;
+		}
+	}
+	QuickSort(my_vector,0,my_vector.size()-1);
+	PrintArray(my_vector);
+}
+int main() {
+	int n;
+	string numbers;
+	cin >> n;
+	cin.ignore();
+	getline(cin, numbers);
+	StartProcessSort(numbers, n);
+
+	return 0;
+}
